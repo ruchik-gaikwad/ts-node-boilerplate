@@ -1,0 +1,33 @@
+image: node:12-alpine
+
+stages:
+  - build
+  - quality_check
+  - build_docker_image
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - ./node_modules/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+
+lint:
+  stage: quality_check
+  script:
+    - npm install
+    - npm run lint
+
+test:
+  stage: quality_check
+  script:
+    - npm install
+    - npm run build
+    - npm run test
