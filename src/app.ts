@@ -44,7 +44,7 @@ export default class App {
     }
 
     public initializeErrorHandling(): void {
-        this.app.use(errMiddleware);
+        // this.app.use(errMiddleware);
     }
     
     public initializeMiddlewares(): void {
