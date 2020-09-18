@@ -12,7 +12,7 @@ describe("GET /api", () => {
    });
 
     it("should return 200 OK", () => {
-        return request(app).get("/ping", (err, res) => {
+        return request(app).get("/ping", () => {
             expect(200);
         });
     });
